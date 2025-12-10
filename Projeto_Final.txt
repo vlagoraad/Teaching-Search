@@ -1,0 +1,80 @@
+﻿CREATE DATABASE IF NOT EXISTS projeto_final;
+USE projeto_final;
+
+
+CREATE TABLE aluno(
+        aluno_id int PRIMARY KEY  AUTO_INCREMENT,
+    aluno_nome varchar(50) not null,
+    aluno_email varchar(50) not null UNIQUE,
+    aluno_cpf varchar(25) not null UNIQUE,
+    aluno_data_nasc date not null,
+    aluno_senha varchar(50) not null,
+    aluno_conf_senha varchar(50) not null
+);
+
+
+CREATE TABLE ministrante(
+        ministrante_id int PRIMARY KEY  AUTO_INCREMENT,
+    ministrante_nome varchar(50) not null,
+    ministrante_email varchar(50) not null UNIQUE,
+    ministrante_cpf varchar(25) not null UNIQUE,
+    ministrante_data_nasc date not null,
+    ministrante_senha varchar(50) not null,
+    ministrante_conf_senha varchar(50) not null
+);
+
+
+CREATE TABLE empresa(
+        empresa_id int PRIMARY KEY  AUTO_INCREMENT,
+    empresa_nome varchar(50) not null,
+    empresa_email varchar(50) not null UNIQUE,
+    empresa_cnpj varchar(25) not null UNIQUE,
+    empresa_telefone varchar(50) not null UNIQUE,
+    empresa_cep varchar(50) not null,
+    empresa_uf varchar(50) not null,
+    empresa_cidade varchar(50) not null,
+    empresa_logradouro varchar(50) not null,
+    empresa_num int not null,
+    empresa_senha varchar(50) not null,
+    empresa_conf_senha varchar(50) not null
+);
+
+
+CREATE TABLE curso(
+        curso_id int PRIMARY KEY AUTO_INCREMENT,
+    curso_titulo varchar(100) not null,
+    curso_duração int not null,
+    curso_descrição text null,
+    curso_data_ini date not null,
+    curso_data_ter date not null,
+    curso_ministrante_id int,
+    curso_empresa_id int,
+    
+    FOREIGN KEY (curso_ministrante_id) REFERENCES ministrante(ministrante_id),
+    FOREIGN KEY (curso_empresa_id) REFERENCES empresa(empresa_id)
+);
+
+
+CREATE TABLE vaga(
+        vaga_id int PRIMARY KEY AUTO_INCREMENT,
+    vaga_titulo varchar(100) not null,
+    vaga_modalidade varchar(20) not null,
+    vaga_descrição text null,
+    vaga_data_ini date not null,
+    vaga_carga_hor int not null,
+    vaga_empresa_id int,
+    
+    FOREIGN KEY (vaga_empresa_id) REFERENCES empresa(empresa_id)
+);
+
+
+CREATE TABLE mv_vaga(
+        vaga_id int,
+    aluno_id int
+);
+
+
+CREATE TABLE mv_curso(
+        curso_id int,
+    aluno_id int
+);

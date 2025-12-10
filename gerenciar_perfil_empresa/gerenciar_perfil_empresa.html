@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../geralt.css">
+    <title>Gerenciar Perfil</title>
+</head>
+<body>
+  <h1>Gerenciar Perfil da Empresa</h1>
+  <form class="cont" id="meuForm">
+    <label for="empresa_nome">Nome da empresa</label><br>
+    <input type="text" name="empresa_nome" id="empresa_nome"><br>
+
+    <label for="empresa_email">Email</label><br>
+    <input type="email" name="empresa_email" id="empresa_email" required><br>
+
+    <label for="empresa_cnpj">CNPJ</label><br>
+    <input type="text" name="empresa_cnpj" id="empresa_cnpj" readonly><br>
+
+    <label for="empresa_telefone">Telefone</label><br>
+    <input type="text" name="empresa_telefone" id="empresa_telefone" required><br>
+
+    <label for="empresa_cep">CEP</label><br>
+    <input type="text" name="empresa_cep" id="empresa_cep" required><br>
+
+    <label for="empresa_uf">UF</label><br>
+    <select name="empresa_uf" id="empresa_uf" required>
+      <option value="">Selecione</option>
+      <option value="AC">AC - Acre</option>
+      <option value="AL">AL - Alagoas</option>
+      <option value="AP">AP - Amapá</option>
+      <option value="AM">AM - Amazonas</option>
+      <option value="BA">BA - Bahia</option>
+      <option value="CE">CE - Ceará</option>
+      <option value="DF">DF - Distrito Federal</option>
+      <option value="ES">ES - Espírito Santo</option>
+      <option value="GO">GO - Goiás</option>
+      <option value="MA">MA - Maranhão</option>
+      <option value="MT">MT - Mato Grosso</option>
+      <option value="MS">MS - Mato Grosso do Sul</option>
+      <option value="MG">MG - Minas Gerais</option>
+      <option value="PA">PA - Pará</option>
+      <option value="PB">PB - Paraíba</option>
+      <option value="PR">PR - Paraná</option>
+      <option value="PE">PE - Pernambuco</option>
+      <option value="PI">PI - Piauí</option>
+      <option value="RJ">RJ - Rio de Janeiro</option>
+      <option value="RN">RN - Rio Grande do Norte</option>
+      <option value="RS">RS - Rio Grande do Sul</option>
+      <option value="RO">RO - Rondônia</option>
+      <option value="RR">RR - Roraima</option>
+      <option value="SC">SC - Santa Catarina</option>
+      <option value="SP">SP - São Paulo</option>
+      <option value="SE">SE - Sergipe</option>
+      <option value="TO">TO - Tocantins</option>
+    </select><br>
+
+    <label for="empresa_cidade">Cidade</label><br>
+    <input type="text" name="empresa_cidade" id="empresa_cidade" required><br>
+
+    <label for="empresa_logradouro">Logradouro</label><br>
+    <input type="text" name="empresa_logradouro" id="empresa_logradouro" required><br>
+
+    <label for="numero">Número</label><br>
+    <input type="number" name="numero" id="numero" required><br>
+
+    <label for="senha">Nova senha (deixe em branco para manter)</label><br>
+    <input type="password" name="senha" id="senha"><br>
+
+    <label for="conf_senha">Confirmar nova senha</label><br>
+    <input type="password" name="conf_senha" id="conf_senha"><br>
+
+    <button type="submit">Salvar Alterações</button>
+  </form>
+
+  <div id="delete">
+    <button class="btn-excluir" type="button" id="btn-excluir">Excluir Perfil</button>
+  </div>
+
+  <script>
+    document.getElementById('meuForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const form = e.target;
+
+fetch('atualizar_perfil_empresa.php', {
+  method: 'POST',
+  body: new FormData(form)
+})
+.then(async res => {
+  const text = await res.text();
+  console.log("Resposta bruta do PHP:", text);
+  try {
+    const json = JSON.parse(text);
+    alert(json.success ? 'Perfil atualizado com sucesso!' : 'Erro: ' + json.message);
+  } catch (err) {
+    console.error("Erro ao converter JSON:", err);
+    alert("Erro inesperado:\n" + text);
+  }
+});
+
+    });
+
+    document.getElementById('btn-excluir').addEventListener('click', () => {
+      if (confirm('Deseja realmente excluir seu perfil?')) {
+        fetch('excluir_perfil_empresa.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          body: new URLSearchParams({confirmacao: 'sim'})
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            alert('Perfil excluído.');
+            window.location.href = "../home_empresa/home_empresa.html";
+          } else {
+            alert('Erro: ' + data.message);
+          }
+        })
+        .catch(err => alert('Erro: ' + err.message));
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('buscar_dados_empresa.php')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          const form = document.forms['meuForm'];
+          Object.entries(data.empresa).forEach(([key, value]) => {
+            if (form.elements.namedItem(key)) {
+              form.elements.namedItem(key).value = value;
+            }
+          });
+        } else {
+          alert('Erro ao carregar perfil: ' + data.message);
+        }
+      })
+      .catch(err => alert('Erro: ' + err.message));
+    });
+  </script>
+</body>
+</html>

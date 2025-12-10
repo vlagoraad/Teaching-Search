@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../gerenciar_perfil/gerenciar_perfil.css"/>
+  <link rel="stylesheet" href="../geralt.css"/>
+  <title>Gerenciar Perfil</title>
+</head>
+<body>
+  <div class="cont">
+    <div id="title">Gerenciar Perfil</div>
+    <div class="division">
+      <form id="meuForm">
+        <div class="side">
+          <label for="nome">Nome</label>
+          <input type="text" name="nome"/>
+
+          <label for="email">Email</label>
+          <input type="email" name="email"/>
+
+          <label for="cpf">CPF</label>
+          <input type="text" name="cpf" readonly/>
+        </div>
+
+        <div class="side">
+          <label for="data_nasc">Data de nascimento</label>
+          <input type="date" name="data_nasc"/>
+
+          <label for="senha">Nova senha</label>
+          <input type="password" name="senha" placeholder="Deixe em branco para manter"/>
+
+          <label for="conf_senha">Confirmar nova senha</label>
+          <input type="password" name="conf_senha" placeholder="Repita a nova senha"/>
+
+          <button class="bt-salvar" type="submit">Salvar Alterações</button>
+          <a href="../home_aluno/home_aluno.html">Voltar</a>
+        </div>
+      </form>
+
+      <div id="delete">
+        <button class="bt-excluir" type="button" id="btn-excluir">Excluir Perfil</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Preenche os campos com dados do usuário logado
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('buscar_dados.php', {
+        method: 'GET',
+        credentials: 'include'
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          const dados = data.dados;
+          document.querySelector('input[name="nome"]').value = dados.nome;
+          document.querySelector('input[name="email"]').value = dados.email;
+          document.querySelector('input[name="cpf"]').value = dados.cpf;
+          document.querySelector('input[name="data_nasc"]').value = dados.data_nasc;
+        } else {
+          alert('Erro ao buscar dados: ' + data.message);
+        }
+      })
+      .catch(error => {
+        alert('Erro na requisição: ' + error.message);
+      });
+    });
+
+    // Envia alterações do formulário
+    document.getElementById('meuForm').addEventListener('submit', e => {
+      e.preventDefault();
+      fetch('gerenciar_perfil.php', {
+        method: 'POST',
+        body: new FormData(e.target)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('Perfil alterado com sucesso!');
+        } else {
+          alert('Erro na alteração: ' + data.message);
+        }
+      })
+      .catch(error => {
+        alert('Erro na requisição: ' + error.message);
+      });
+    });
+
+    // Exclusão do perfil
+    document.getElementById('btn-excluir').addEventListener('click', () => {
+      if (confirm('Tem certeza que deseja excluir seu perfil? Esta ação não pode ser desfeita.')) {
+        fetch('../gerenciar_perfil/excluir_perfil.php', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: new URLSearchParams({ confirmacao: 'sim' })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Perfil excluído com sucesso.');
+            window.location.href = "../home_aluno/home_aluno.html";
+          } else {
+            alert('Erro ao excluir: ' + data.message);
+          }
+        })
+        .catch(error => {
+          alert('Erro na requisição: ' + error.message);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

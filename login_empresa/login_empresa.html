@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+      <link rel="stylesheet" href="login_empresa.css">
+    <link rel="stylesheet" href="../geralt.css">
+  <title>Login Empresa</title>
+</head>
+<body>
+  <h2>Login da Empresa</h2>
+  <form id="formLoginEmpresa">
+    <label>Email:</label>
+    <input type="email" name="email" required><br>
+
+    <label>Senha:</label>
+    <input type="password" name="senha" required><br>
+
+    <button type="submit">Entrar</button>
+  </form>
+
+  <script>
+    document.getElementById('formLoginEmpresa').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+
+      const response = await fetch('login_empresa.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        window.location.href = '../home_empresa_logada/home_empresa.php';
+      } else {
+        alert(data.message);
+      }
+    });
+  </script>
+</body>
+</html>

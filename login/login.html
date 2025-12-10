@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../geralt.css">
+
+    <title>Login</title>
+</head>
+<body>
+    <div class="cont">
+        <form action="../login/login.php" method="POST" id="meuForm">
+            <label for="">Email</label>
+            <input type="email" name="email">
+            <label for="">Senha</label>
+            <input type="password" name="senha"> <br>
+            <label for="tp_cadastro">Tipo de Cadastro</label><br>
+                <select id="tp_cadastro" name="tp_cadastro" required>
+                    <option value="">-- Selecione --</option>
+                    <option value="ministrante">Ministrante</option>
+                    <option value="aluno">Aluno</option>
+
+                </select><br><br>
+            <button type='submit' name="submit" id="submit" class="bt-logar">Logar</button>
+        </form>
+        <a href="../esqueceu_senha/esq_senha.html">Esqueceu a senha? Aperte aqui</a>
+        <a href="../cadastro/cadastro.html">Não tem conta? Cadastre-se aqui</a>
+    </div>
+</body>
+</html>

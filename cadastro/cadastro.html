@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="../geralt.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="cont">
+        <div>Cadastre-se</div>
+        <div class="division">
+            <form id="meuForm">
+                <div class="side">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome">
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email">
+
+                    <label for="cpf">CPF</label>
+                    <input type="text" name="cpf">
+
+                    <label for="tp_cadastro">Tipo de cadastro</label>
+                    <select name="tp_cadastro" id="tp_cadastro">
+                        <option value="">--Selecione--</option>
+                        <option value="ministrante">Ministrante</option>
+                        <option value="aluno">Aluno</option>
+                    </select>
+                </div>
+
+                <div class="side">
+                    <label for="data_nasc">Data de nascimento</label>
+                    <input type="date" name="data_nasc">
+
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha">
+
+                    <label for="conf_senha">Confirmar senha</label>
+                    <input type="password" name="conf_senha">
+
+                    <button class="bt-logar" type="submit">Cadastrar</button>
+                    <a href="../login/login.html">Já tem uma conta? Entre aqui</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('meuForm').addEventListener('submit', e => { // quando o botao for submitado (e é o objeto do evento)
+            e.preventDefault(); //impede a página de recarregar 
+            
+            fetch("cadastro.php", { //faz a requisição via fetch
+                method: 'POST', // seleciona o metodo POST 
+                body: new FormData(e.target) // pega as informacoes do formulario 
+            }) //retorna uma promise 
+            .then(response => response.json()) // processa a resposta
+            .then(data => {  // retorna o que aconteceu 
+                if (data.success) {
+                    alert('Cadastro feito!');
+                } else {
+                    alert('Erro no cadastro: ' + data.message); 
+                }
+            })
+            .catch(error => { // trata erro 
+                alert('Erro na requisição: ' + error.message);
+            });
+        });
+    </script>
+</body>
+</html>

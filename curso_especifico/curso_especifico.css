@@ -1,0 +1,49 @@
+.curso-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00539C;
+    border-bottom: 3px solid #00539C;
+    padding-bottom: 30px;
+}
+
+.detalhe {
+    margin-bottom: 20px;
+}
+
+.detalhe label {
+    display: flex;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: #004080;
+}
+
+.detalhe p, 
+.detalhe ul {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    color: #555;
+}
+
+.detalhe ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+button {
+    display: flex;
+    width: 100%;
+    padding: 14px 0;
+    background-color: #00539C;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+button:hover {
+    background-color: #003d66;
+}

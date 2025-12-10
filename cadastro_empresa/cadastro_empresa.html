@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastro_empresa.css">
+    <link rel="stylesheet" href="../geralt.css">
+    <title>Cadastro empresa</title>
+</head>
+<body>
+    <div class="cont">
+        <div>Cadastre sua empresa</div>
+        <div class="division">
+            <form id="meuForm">
+                <div class="side">
+                    <label for="nome">Nome da empresa</label>
+                    <input type="text" name="nome">
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email">
+
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" name="cnpj">
+
+                    <label for="telefone">Telefone</label>
+                    <input type="text" name="telefone">
+                </div>
+
+                <div class="side">
+                    <label for="cep">CEP</label>
+                    <input type="text" name="cep">
+
+                    <label for="uf">UF</label>
+                    <label for="uf">Escolha a UF:</label>
+                    <select id="uf" name="uf">
+                    <option value="">--Selecione--</option>
+                    <option value="AC">AC - Acre</option>
+                    <option value="AL">AL - Alagoas</option>
+                    <option value="AP">AP - Amapá</option>
+                    <option value="AM">AM - Amazonas</option>
+                    <option value="BA">BA - Bahia</option>
+                    <option value="CE">CE - Ceará</option>
+                    <option value="DF">DF - Distrito Federal</option>
+                    <option value="ES">ES - Espírito Santo</option>
+                    <option value="GO">GO - Goiás</option>
+                    <option value="MA">MA - Maranhão</option>
+                    <option value="MT">MT - Mato Grosso</option>
+                    <option value="MS">MS - Mato Grosso do Sul</option>
+                    <option value="MG">MG - Minas Gerais</option>
+                    <option value="PA">PA - Pará</option>
+                    <option value="PB">PB - Paraíba</option>
+                    <option value="PR">PR - Paraná</option>
+                    <option value="PE">PE - Pernambuco</option>
+                    <option value="PI">PI - Piauí</option>
+                    <option value="RJ">RJ - Rio de Janeiro</option>
+                    <option value="RN">RN - Rio Grande do Norte</option>
+                    <option value="RS">RS - Rio Grande do Sul</option>
+                    <option value="RO">RO - Rondônia</option>
+                    <option value="RR">RR - Roraima</option>
+                    <option value="SC">SC - Santa Catarina</option>
+                    <option value="SP">SP - São Paulo</option>
+                    <option value="SE">SE - Sergipe</option>
+                    <option value="TO">TO - Tocantins</option>
+                    </select>
+
+
+                    <label for="cidade">Cidade</label>
+                    <input type="text" name="cidade">
+
+                    <label for="logradouro">Logradouro</label>
+                    <input type="text" name="logradouro">
+
+                    <label for="numero">Numero</label>
+                    <input type="number" name="numero">
+
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha">
+
+                    <label for="conf_senha">Confirmar senha</label>
+                    <input type="password" name="conf_senha">
+
+                    <button class="bt-logar" type="submit">Cadastrar</button>
+                    <a href="../login_empresa/login_empresa.html">Já tem uma conta? Entre aqui</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('meuForm').addEventListener('submit', e => { // quando o botao for submitado (e é o objeto do evento)
+            e.preventDefault(); //impede a página de recarregar 
+            fetch("cadastro_empresa.php", { //faz a requisição via fetch
+                method: 'POST', // seleciona o metodo POST 
+                body: new FormData(e.target) // pega as informacoes do formulario 
+            }) //retorna uma promise 
+            .then(response => response.json()) // processa a resposta
+            .then(data => {  // retorna o que aconteceu 
+                if (data.success) {
+                    alert('Cadastro feito!');
+                } else {
+                    alert('Erro no cadastro: ' + data.message); 
+                }
+            })
+            .catch(error => { // trata erro 
+                alert('Erro na requisição: ' + error.message);
+            });
+        });
+    </script>
+</body>
+</html>

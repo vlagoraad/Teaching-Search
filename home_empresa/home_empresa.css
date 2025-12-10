@@ -1,0 +1,59 @@
+.divi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px;
+}
+.side{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.divi button{
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+  margin-top: 20px;
+  width: 200px;
+
+}
+.text{
+  width: 600px;
+  font-family: "Quicksand";
+  text-align: center;
+  font-weight: 600;
+}
+.cursos-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.curso-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.curso-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.curso-card p {
+  font-size: 14px;
+  color: #555;
+  margin: 4px 0;
+}
+.tit{
+  margin-left: 30px;
+}
