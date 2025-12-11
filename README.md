@@ -1,111 +1,70 @@
-Teaching Search
+<h1 align="center">Teaching Search</h1>
+<p align="center">
+  Plataforma web para capacitação de professores e conexão com escolas inclusivas.
+</p>
 
-Plataforma de capacitação e conexão entre professores e escolas inclusivas.
+<p align="center">
+  <img src="Home aluno.png" alt="Interface principal - Home do aluno" width="700">
+</p>
 
-<div align="center">
+<hr>
 
-</div>
-✨ Sobre o Projeto
+<h2>Sobre o Projeto</h2>
+<p>
+  O <strong>Teaching Search</strong> é uma plataforma criada para apoiar professores que trabalham — ou desejam trabalhar — com alunos com deficiência. 
+  A proposta é oferecer um ambiente simples onde esses profissionais possam acessar cursos, concluir certificações e, depois disso, 
+  se candidatar a vagas em escolas que buscam docentes especializados.
+</p>
 
-O Teaching Search é uma plataforma web criada para apoiar professores que trabalham — ou desejam trabalhar — com alunos com deficiência. A aplicação oferece um ambiente simples e intuitivo onde educadores podem:
+<p>
+  Para as escolas, o sistema permite cadastrar vagas, acompanhar candidaturas e encontrar facilmente professores certificados. 
+  Assim, o Teaching Search funciona como uma ponte direta entre instituições de ensino e profissionais formados, 
+  tornando o processo de contratação mais ágil e organizado.
+</p>
 
-Acessar cursos de capacitação
+<hr>
 
-Concluir certificações
+<h2>Tecnologias Utilizadas</h2>
+<ul>
+  <li>HTML5</li>
+  <li>CSS3</li>
+  <li>JavaScript (ES6+)</li>
+  <li>PHP 8+</li>
+  <li>MySQL</li>
+</ul>
 
-Acompanhar seu progresso
+<hr>
 
-Candidatar-se a vagas em escolas da rede inclusiva
+<h2>Como Executar o Projeto</h2>
+<ol>
+  <li>Clone o repositório para sua máquina.</li>
+  <li>Mova os arquivos para o diretório do seu servidor local (XAMPP, WAMP ou MAMP).</li>
+  <li>Crie o banco de dados no phpMyAdmin e importe o arquivo <code>.sql</code>, caso exista.</li>
+  <li>Atualize o arquivo <code>conexao.php</code> com as informações do seu servidor.</li>
+  <li>Acesse <code>http://localhost/</code> no navegador.</li>
+</ol>
 
-Do outro lado, as escolas podem:
+<hr>
 
-Cadastrar vagas
+<h2>Estrutura do Projeto</h2>
+<ul>
+  <li><strong>/public</strong> — páginas acessíveis ao usuário</li>
+  <li><strong>/restrito</strong> — áreas de acesso para professores e escolas</li>
+  <li><strong>/assets</strong> — CSS, imagens e JavaScript</li>
+  <li><strong>/php</strong> — scripts de lógica, autenticação e conexão</li>
+  <li><strong>index.php</strong> — página inicial</li>
+</ul>
 
-Acompanhar candidaturas
+<hr>
 
-Encontrar professores certificados de acordo com suas necessidades
+<h2>Participantes</h2>
+<ul>
+  <li><strong>Amanda da Silva Freire</strong></li>
+  <li><strong>Valentina Lago Raad</strong></li>
+</ul>
 
-O sistema funciona como uma ponte entre profissionais capacitados e instituições de ensino, facilitando o processo de contratação e fortalecendo a inclusão escolar.
+<hr>
 
-🧩 Tecnologias Utilizadas
-
-Front-end:
-
-HTML5
-
-CSS3
-
-JavaScript (ES6+)
-
-Back-end:
-
-PHP 8+
-
-MySQL (phpMyAdmin)
-
-Outros Recursos:
-
-Sessões PHP para autenticação
-
-Fetch API para comunicação assíncrona
-
-Estrutura organizada por áreas públicas e restritas
-
-🚀 Como Executar o Projeto
-1. Clonar o repositório
-git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
-
-2. Mover para servidor local
-
-Coloque o projeto em:
-
-htdocs (XAMPP)
-
-www (WAMP)
-
-Applications/MAMP/htdocs (MAMP)
-
-3. Configurar o banco de dados
-
-Abra o phpMyAdmin
-
-Crie um banco (ex.: teaching_search)
-
-Importe o arquivo .sql do projeto (caso exista)
-
-4. Configurar a conexão
-
-No arquivo conexao.php, ajuste:
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "teaching_search";
-
-5. Executar
-
-Abra no navegador:
-
-http://localhost/teaching-search/
-
-📁 Estrutura do Projeto (resumo)
-/public               → páginas acessíveis
-/restrito             → áreas para professores e escolas
-/assets               → CSS, imagens e scripts JS
-/php                  → arquivos de lógica, autenticação e conexões
-index.php             → página inicial
-
-🖼️ Prévia da Interface
-
-(Adicione imagens aqui quando quiser)
-
-Exemplo:
-
-![Tela Inicial](assets/img/tela_inicial.png)
-![Dashboard](assets/img/dashboard_professor.png)
-
-👥 Participantes
-
-Amanda da Silva Freire
-Valentina Lago Raad
-
+<p align="center">
+  <em>Projeto desenvolvido para fins acadêmicos.</em>
+</p>
