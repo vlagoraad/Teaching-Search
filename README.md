@@ -1,9 +1,111 @@
 Teaching Search
 
-O Teaching Search é uma plataforma web desenvolvida em HTML, CSS, JavaScript e PHP com o objetivo de apoiar professores que trabalham — ou desejam trabalhar — com alunos com deficiência. A ideia central do projeto é oferecer um ambiente simples e intuitivo onde esses profissionais possam acessar cursos de capacitação, concluir certificações e, a partir disso, se candidatar a vagas em escolas que procuram professores especializados em áreas específicas da educação inclusiva.
+Plataforma de capacitação e conexão entre professores e escolas inclusivas.
 
-O sistema também facilita a rotina das próprias escolas, que podem cadastrar vagas, acompanhar candidaturas e encontrar professores já certificados dentro da plataforma. Dessa forma, o Teaching Search funciona como uma ponte entre instituições de ensino e profissionais formados, melhorando a comunicação e tornando o processo de contratação mais rápido e eficiente.
+<div align="center">
 
-A aplicação foi construída utilizando HTML e CSS para a estrutura e estilo das páginas, JavaScript para a parte interativa do front-end e PHP no back-end, responsável por autenticação, validações, gerenciamento de dados e conexão com o banco MySQL. A organização do projeto segue uma divisão simples entre páginas públicas, áreas restritas, arquivos estáticos e scripts de lógica.
+</div>
+✨ Sobre o Projeto
 
-Para executar o projeto, basta clonar o repositório, colocá-lo em um servidor local (como XAMPP, WAMP ou MAMP), configurar a conexão com o banco de dados e acessar pelo navegador. Caso exista um arquivo SQL para importação, ele deve ser carregado no phpMyAdmin antes do primeiro uso.
+O Teaching Search é uma plataforma web criada para apoiar professores que trabalham — ou desejam trabalhar — com alunos com deficiência. A aplicação oferece um ambiente simples e intuitivo onde educadores podem:
+
+Acessar cursos de capacitação
+
+Concluir certificações
+
+Acompanhar seu progresso
+
+Candidatar-se a vagas em escolas da rede inclusiva
+
+Do outro lado, as escolas podem:
+
+Cadastrar vagas
+
+Acompanhar candidaturas
+
+Encontrar professores certificados de acordo com suas necessidades
+
+O sistema funciona como uma ponte entre profissionais capacitados e instituições de ensino, facilitando o processo de contratação e fortalecendo a inclusão escolar.
+
+🧩 Tecnologias Utilizadas
+
+Front-end:
+
+HTML5
+
+CSS3
+
+JavaScript (ES6+)
+
+Back-end:
+
+PHP 8+
+
+MySQL (phpMyAdmin)
+
+Outros Recursos:
+
+Sessões PHP para autenticação
+
+Fetch API para comunicação assíncrona
+
+Estrutura organizada por áreas públicas e restritas
+
+🚀 Como Executar o Projeto
+1. Clonar o repositório
+git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+
+2. Mover para servidor local
+
+Coloque o projeto em:
+
+htdocs (XAMPP)
+
+www (WAMP)
+
+Applications/MAMP/htdocs (MAMP)
+
+3. Configurar o banco de dados
+
+Abra o phpMyAdmin
+
+Crie um banco (ex.: teaching_search)
+
+Importe o arquivo .sql do projeto (caso exista)
+
+4. Configurar a conexão
+
+No arquivo conexao.php, ajuste:
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "teaching_search";
+
+5. Executar
+
+Abra no navegador:
+
+http://localhost/teaching-search/
+
+📁 Estrutura do Projeto (resumo)
+/public               → páginas acessíveis
+/restrito             → áreas para professores e escolas
+/assets               → CSS, imagens e scripts JS
+/php                  → arquivos de lógica, autenticação e conexões
+index.php             → página inicial
+
+🖼️ Prévia da Interface
+
+(Adicione imagens aqui quando quiser)
+
+Exemplo:
+
+![Tela Inicial](assets/img/tela_inicial.png)
+![Dashboard](assets/img/dashboard_professor.png)
+
+👥 Participantes
+
+Amanda da Silva Freire
+Valentina Lago Raad
+
